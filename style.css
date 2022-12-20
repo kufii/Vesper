@@ -1,0 +1,91 @@
+:root {
+  --font-family-cursive: "Corinthia", serif;
+  --font-family-serif: "Cormorant", serif;
+  --color-bg-light: #f6f2e7;
+  --color-bg-dark: #3a5d42;
+}
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body {
+  font-family: var(--font-family-serif);
+  font-size: 1.8rem;
+}
+/* LAYOUT */
+.main {
+  width: fit-content;
+  max-width: 55rem;
+  margin: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10rem;
+}
+
+/* STYLES */
+.header {
+  font-family: var(--font-family-cursive);
+  font-weight: 700;
+  font-size: 10rem;
+  text-align: center;
+}
+
+.date {
+  margin-top: 1rem;
+  font-size: 3rem;
+}
+
+.nature-images {
+  position: relative;
+}
+
+.nature-images::before {
+  content: "";
+  position: absolute;
+  background-image: url("./images/leaf.svg");
+  width: 300px;
+  height: 500px;
+  right: 70%;
+  bottom: 45%;
+}
+
+.nature-images::after {
+  content: "";
+  position: absolute;
+  background-image: url("./images/rose.svg");
+  width: 500px;
+  height: 500px;
+  left: 70%;
+  bottom: 20%;
+}
+
+/* UTILITY */
+.center {
+  text-align: center;
+}
+
+.bg-light {
+  background-color: var(--color-bg-light);
+  color: var(--color-bg-dark);
+}
+
+.bg-dark {
+  background-color: var(--color-bg-dark);
+  color: var(--color-bg-light);
+}
+
+.full-screen {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  min-height: 100vh;
+}
