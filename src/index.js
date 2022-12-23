@@ -9,13 +9,15 @@ initPdf(magni, (err, book) => {
     console.error(err)
     return
   }
-  const opts = {
-    width: 800,
-    height: 600,
-  }
+  const pdfNode = document.querySelector('#flipbookPdf')
+  const btnPrev = document.querySelector('#flipbookPrev')
+  const btnNext = document.querySelector('#flipbookNext')
+  const opts = {}
   console.log('arseitnaeirs')
-  flipbook(book, 'div-id', opts, (err, viewer) => {
+  flipbook(book, pdfNode, opts, (err, viewer) => {
     if (err) return console.error(err)
     viewer.on('seen', (n) => console.log('page number: ' + n))
+    btnNext.onclick = () => viewer.flip_forward()
+    btnPrev.onclick = () => viewer.flip_back()
   })
 })
