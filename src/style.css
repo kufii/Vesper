@@ -173,7 +173,7 @@ img {
   grid-template-columns: auto 1fr auto;
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: var(--z-index-modal);
 }
 
@@ -182,7 +182,15 @@ img {
   place-items: center;
 }
 
+.flipbook-pdf canvas {
+  max-width: 100%;
+  max-height: 100vh;
+  width: auto !important;
+  height: auto !important;
+  aspect-ratio: 800/600;
+}
+
 .flipbook-nav {
   height: 100%;
-  padding-inline: 3rem
+  padding-inline: 3rem;
 }
