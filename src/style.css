@@ -1,6 +1,6 @@
 :root {
-  --font-family-cursive: "Corinthia", serif;
-  --font-family-serif: "Cormorant", serif;
+  --font-family-cursive: 'Corinthia', serif;
+  --font-family-serif: 'Cormorant', serif;
   --color-bg-light: #f6f2e7;
   --color-bg-dark: #3a5d42;
 }
@@ -58,9 +58,9 @@ img {
 }
 
 .nature-images::before {
-  content: "";
+  content: '';
   position: absolute;
-  background-image: url("./images/leaf.svg");
+  background-image: url('./images/leaf.svg');
   width: 300px;
   height: 500px;
   right: 70%;
@@ -68,9 +68,9 @@ img {
 }
 
 .nature-images::after {
-  content: "";
+  content: '';
   position: absolute;
-  background-image: url("./images/rose.svg");
+  background-image: url('./images/rose.svg');
   width: 500px;
   height: 500px;
   left: 70%;
@@ -98,7 +98,7 @@ img {
 }
 
 .bookshelf::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 16px;
   background: linear-gradient(90deg, #fafafa 0%, #ffffff 100%);

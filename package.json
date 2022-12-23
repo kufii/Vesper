@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack --watch",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,json,css,prettierrc,eslintrc,html,babelrc}\"",
+    "check:format": "prettier --check \"**/*.{js,jsx,ts,tsx,md,json,css,prettierrc,eslintrc,html,babelrc}\""
+  },
+  "dependencies": {
+    "buffer": "^6.0.3",
+    "flipbook-viewer": "^1.6.1",
+    "pdfjs-dist": "^3.1.81"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.8.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
