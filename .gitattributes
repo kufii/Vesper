@@ -1,6 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-
 *.png binary
 *.jpg binary
 *.jpeg binary
@@ -19,3 +18,4 @@
 *.ttf binary
 *.woff binary
 *.woff2 binary
+*.pdf filter=lfs diff=lfs merge=lfs -text
