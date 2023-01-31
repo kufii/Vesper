@@ -26,6 +26,10 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+[hidden] {
+  display: none !important;
+}
 /* LAYOUT */
 .wrapper {
   overflow-x: hidden;
@@ -86,7 +90,6 @@ img {
 }
 
 .bookshelf {
-  max-width: 1000px;
   width: 80%;
   display: flex;
   justify-content: center;

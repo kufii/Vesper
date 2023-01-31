@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bootstrap 4 Website Example</title>
+    <title>Vesper Noir</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- FONTS -->
@@ -42,13 +42,13 @@
       <div class="full-screen bg-dark">
         <div class="bookshelf-container">
           <div class="books">
-            <button class="book">
+            <button class="book" data-book="test">
               <img src="./images/cover.jpeg" alt="book" />
             </button>
-            <button class="book">
+            <button class="book" data-book="test">
               <img src="./images/cover.jpeg" alt="book" />
             </button>
-            <button class="book">
+            <button class="book" data-book="magni">
               <img src="./images/cover.jpeg" alt="book" />
             </button>
           </div>
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="flipbook">
+    <div class="flipbook" id="flipbook" hidden>
       <button id="flipbookPrev" class="flipbook-nav">prev</button>
       <div id="flipbookPdf" class="flipbook-pdf"></div>
       <button id="flipbookNext" class="flipbook-nav">NEXT</button>
