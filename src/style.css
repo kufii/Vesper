@@ -111,7 +111,6 @@ img {
   height: 26px;
   width: calc(100% + 40px);
   box-shadow: 0px -1px 6px rgb(0 0 0 / 5%), 0px 4px 16px rgb(0 0 0 / 25%);
-  z-index: var(--z-index-front);
 }
 
 .books {
@@ -122,29 +121,84 @@ img {
   margin: auto;
   padding: 0 0 2px;
   position: relative;
-  transform: translateY(10px);
+  transform: translateY(8px);
   z-index: var(--z-index-front);
 }
 
+.book-container {
+  --book-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
 .book {
+  position: relative;
+  transform-style: preserve-3d;
   outline: none;
   border: none;
   cursor: pointer;
   border-radius: 3px 0.5px 0.5px 3px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   transition: transform 200ms ease-in-out;
+  transform: rotateY(0deg);
+  background: transparent;
 }
 
-.books .book:nth-child(odd):hover {
-  transform: translate(0, -70px) skew(3deg, -3deg) scale(1.35);
+.books .book:hover {
+  transform: rotateY(-20deg);
 }
 
-.books .book:nth-child(even):hover {
-  transform: translate(0, -70px) skew(-3deg, 3deg) scale(1.35);
+.book::before {
+  --page-inset: 3px;
+  content: ' ';
+  position: absolute;
+  background-color: blue;
+  right: 0;
+  top: var(--page-inset);
+  bottom: var(--page-inset);
+  width: calc(var(--book-width) - 2px);
+  transform: translateX(calc(50% - var(--page-inset))) rotateY(90deg);
+  background: linear-gradient(
+    90deg,
+    #fff 0%,
+    #f9f9f9 5%,
+    #fff 10%,
+    #f9f9f9 15%,
+    #fff 20%,
+    #f9f9f9 25%,
+    #fff 30%,
+    #f9f9f9 35%,
+    #fff 40%,
+    #f9f9f9 45%,
+    #fff 50%,
+    #f9f9f9 55%,
+    #fff 60%,
+    #f9f9f9 65%,
+    #fff 70%,
+    #f9f9f9 75%,
+    #fff 80%,
+    #f9f9f9 85%,
+    #fff 90%,
+    #f9f9f9 95%,
+    #fff 100%
+  );
+}
+
+.book::after {
+  content: ' ';
+  position: absolute;
+  inset: 0;
+  transform: translateZ(calc(var(--book-width) / 2 * -1));
+  background-color: #01060f;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .book img {
   display: block;
+  transform: translateZ(calc(var(--book-width) / 2));
+  border-radius: 0 2px 2px 0;
 }
 
 /* UTILITY */

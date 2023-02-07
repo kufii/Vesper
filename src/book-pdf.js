@@ -1,9 +1,6 @@
-import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist'
+import { getDocument } from 'pdfjs-dist/webpack'
 
 export function init(pdflink, cb) {
-  GlobalWorkerOptions.workerSrc =
-    '../node_modules/pdfjs-dist/build/pdf.worker.js'
-
   const cache = []
 
   getDocument(pdflink)

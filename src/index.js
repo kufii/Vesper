@@ -30,7 +30,6 @@ const openBook = (name) => () =>
     const opts = {}
     flipbook(book, pdfNode, opts, (err, viewer) => {
       if (err) return console.error(err)
-      viewer.on('seen', (n) => console.log('page number: ' + n))
       btnNext.onclick = () => viewer.flip_forward()
       btnPrev.onclick = () => viewer.flip_back()
     })
