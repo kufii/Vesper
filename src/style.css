@@ -1,8 +1,11 @@
 :root {
   --font-family-cursive: 'Corinthia', serif;
   --font-family-serif: 'Cormorant', serif;
-  --color-bg-light: #f6f2e7;
-  --color-bg-dark: #3a5d42;
+  --font-weight-bold: 700;
+  --color-light: #f6f2e7;
+  --color-primary: #718f74;
+  --color-dark: #494b4f;
+  --color-subdued: #a6a6a6;
   --z-index-base: 0;
   --z-index-front: 1;
   --z-index-modal: 10;
@@ -15,6 +18,7 @@
   padding: 0;
   background-size: cover;
   background-repeat: no-repeat;
+  box-sizing: border-box;
 }
 
 body {
@@ -27,71 +31,116 @@ img {
   height: auto;
 }
 
+hr {
+  border-color: currentColor;
+}
+
 [hidden] {
   display: none !important;
 }
+
 /* LAYOUT */
+
 .wrapper {
   overflow-x: hidden;
 }
 
 .main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: fit-content;
   max-width: 55rem;
   margin: auto;
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10rem;
+.staff-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
 }
 
 /* STYLES */
+
 .header {
   font-family: var(--font-family-cursive);
-  font-weight: 700;
-  font-size: clamp(4rem, 1rem + 10vw, 10rem);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(4rem, 3rem + 3vw, 5rem);
   line-height: 1;
-  text-align: center;
 }
 
-.date {
-  margin-top: 1rem;
-  font-size: 3rem;
-}
-
-.nature-images {
+.teacup-decor {
   position: relative;
 }
 
-.nature-images::before {
+.teacup-decor::before {
   content: '';
   position: absolute;
-  background-image: url('./images/leaf.svg');
-  width: 300px;
-  height: 500px;
-  right: 70%;
-  bottom: 45%;
-}
-
-.nature-images::after {
-  content: '';
-  position: absolute;
-  background-image: url('./images/rose.svg');
+  background-image: url('./images/simpleteacup.svg');
   width: 500px;
   height: 500px;
-  left: 70%;
-  bottom: 20%;
+  left: -6.5rem;
+  bottom: 55%;
 }
+
+.teacup-decor::after {
+  content: '';
+  position: absolute;
+  background-image: url('./images/ornateteacup.svg');
+  width: 500px;
+  height: 500px;
+  right: -8rem;
+  top: 50%;
+}
+
+.transparent-box {
+  background-color: #ffffff;
+  opacity: 0.9;
+  padding: clamp(1rem, 0.6rem + 4vw, 5rem);
+  max-width: 50rem;
+}
+
+.staff-card {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 2rem;
+  background-color: white;
+  opacity: 0.9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.staff-card-title {
+  grid-column: span 2;
+  font-family: var(--font-family-cursive);
+  font-weight: 700;
+  text-align: center;
+  font-size: 3rem;
+  color: #494b4f;
+}
+
+.staff-card-title::after {
+  content: '';
+  display: block;
+  width: 12rem;
+  max-width: 100%;
+  border-bottom: 1px solid darkgray;
+  margin: auto;
+}
+
+.staff-card-content-left {
+  text-align: right;
+}
+/* BOOKSHELF */
 
 .bookshelf-container {
   display: grid;
   place-items: center;
+  max-width: 80rem;
 }
 
 .bookshelf {
-  width: 80%;
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-shrink: 0;
@@ -117,10 +166,8 @@ img {
 .books {
   display: flex;
   justify-content: space-evenly;
-  gap: clamp(1.5rem, 0.8rem + 3vw, 3rem);
-  max-width: 70%;
-  margin: auto;
-  padding: 0 0 2px;
+  gap: clamp(1.4rem, 0.6rem + 4vw, 5rem);
+  margin-inline: clamp(1rem, 0.6rem + 4vw, 5rem);
   position: relative;
   transform: translateY(8px);
   z-index: var(--z-index-front);
@@ -135,12 +182,12 @@ img {
 }
 
 .book {
+  --book-border-radius: 0 2px 2px 0;
   position: relative;
   transform-style: preserve-3d;
   outline: none;
   border: none;
   cursor: pointer;
-  border-radius: 3px 0.5px 0.5px 3px;
   transition: transform 200ms ease-in-out;
   transform: rotateY(0deg);
   background: transparent;
@@ -152,7 +199,7 @@ img {
 
 .book::before {
   --page-inset: 3px;
-  content: ' ';
+  content: '';
   position: absolute;
   background-color: blue;
   right: 0;
@@ -187,19 +234,19 @@ img {
 }
 
 .book::after {
-  content: ' ';
+  content: '';
   position: absolute;
   inset: 0;
   transform: translateZ(calc(var(--book-width) / 2 * -1));
   background-color: #01060f;
-  border-radius: 0 2px 2px 0;
+  border-radius: var(--book-border-radius);
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .book img {
   display: block;
   transform: translateZ(calc(var(--book-width) / 2));
-  border-radius: 0 2px 2px 0;
+  border-radius: var(--book-border-radius);
 }
 
 /* UTILITY */
@@ -208,13 +255,25 @@ img {
 }
 
 .bg-light {
-  background-color: var(--color-bg-light);
-  color: var(--color-bg-dark);
+  background-color: var(--color-light);
+  color: var(--color-dark);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+  color: var(--color-light);
 }
 
 .bg-dark {
-  background-color: var(--color-bg-dark);
-  color: var(--color-bg-light);
+  background-color: var(--color-dark);
+}
+
+.text-subdued {
+  color: var(--color-subdued);
+}
+
+.bg-library {
+  background-image: url('./images/bookcase-vesper.jpg');
 }
 
 .full-screen {
@@ -222,6 +281,12 @@ img {
   place-items: center;
   width: 100vw;
   min-height: 100vh;
+  padding: 2rem;
+}
+
+.underline {
+  width: 90%;
+  margin: auto;
 }
 
 /* FLIPBOOK */
@@ -251,4 +316,30 @@ img {
 .flipbook-nav {
   height: 100%;
   padding-inline: 3rem;
+}
+
+@media (min-width: 40em) {
+  .staff-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1240px) {
+  .teacup-decor::before {
+    left: -20rem;
+  }
+
+  .teacup-decor::after {
+    right: -20rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .teacup-decor::before {
+    left: -30rem;
+  }
+
+  .teacup-decor::after {
+    right: -30rem;
+  }
 }
