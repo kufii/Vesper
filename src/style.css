@@ -1,11 +1,12 @@
 :root {
-  --font-family-cursive: 'Corinthia', serif;
-  --font-family-serif: 'Cormorant', serif;
-  --font-weight-bold: 700;
+  --font-family-cursive: 'Great Vibes', cursive;
+  --font-family-serif: 'Slabo 27px', serif;
   --color-light: #f6f2e7;
   --color-primary: #718f74;
   --color-dark: #494b4f;
   --color-subdued: #a6a6a6;
+  --color-gold: #e7d075;
+  --color-on-primary: #fff;
   --z-index-base: 0;
   --z-index-front: 1;
   --z-index-modal: 10;
@@ -62,6 +63,13 @@ body.modal-open {
   margin: auto;
 }
 
+.bookshelf-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100%;
+}
+
 .staff-grid {
   display: grid;
   gap: 1.5rem;
@@ -72,9 +80,13 @@ body.modal-open {
 
 .header {
   font-family: var(--font-family-cursive);
-  font-weight: var(--font-weight-bold);
   font-size: clamp(4rem, 3rem + 3vw, 5rem);
-  line-height: 1;
+}
+
+.header-2 {
+  text-align: center;
+  font-family: var(--font-family-cursive);
+  font-size: clamp(3rem, 2rem + 3vw, 4rem);
 }
 
 .teacup-decor {
@@ -121,7 +133,6 @@ body.modal-open {
 .staff-card-title {
   grid-column: span 2;
   font-family: var(--font-family-cursive);
-  font-weight: 700;
   text-align: center;
   font-size: 3rem;
   color: #494b4f;
@@ -142,8 +153,8 @@ body.modal-open {
 /* BOOKSHELF */
 
 .bookshelf-container {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
   max-width: 80rem;
 }
 
@@ -159,6 +170,7 @@ body.modal-open {
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   pointer-events: all;
+  margin-bottom: 26px;
 }
 
 .bookshelf::before {
@@ -177,16 +189,16 @@ body.modal-open {
   gap: clamp(1.4rem, 0.6rem + 4vw, 5rem);
   margin-inline: clamp(1rem, 0.6rem + 4vw, 5rem);
   position: relative;
-  transform: translateY(8px);
-  z-index: var(--z-index-front);
 }
 
-.book-container {
+.book-perspective {
   --book-width: clamp(1.5rem, 0.8rem + 3vw, 3rem);
   display: flex;
   align-items: center;
   justify-content: center;
   perspective: 1200px;
+  transform: translateY(8px);
+  z-index: var(--z-index-front);
 }
 
 .book {
@@ -201,7 +213,8 @@ body.modal-open {
   background: transparent;
 }
 
-.books .book:hover {
+.books .book:hover,
+.books .book:focus-visible {
   transform: rotateY(-40deg);
 }
 
@@ -257,6 +270,41 @@ body.modal-open {
   border-radius: var(--book-border-radius);
 }
 
+.bookshelf-buttons {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.bookshelf-button {
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 0.125em;
+  padding: 1em 0.5em;
+  font-family: var(--font-family-serif);
+  font-size: clamp(0.7rem, 0.5rem + 1vw, 1.2rem);
+  cursor: pointer;
+  transition: filter 200ms;
+}
+
+.bookshelf-button:hover,
+.bookshelf-button:focus-visible {
+  filter: brightness(90%);
+}
+
+.bookshelf-button-primary {
+  color: var(--color-dark);
+  background-color: var(--color-gold);
+}
+
+.bookshelf-button-secondary {
+  color: var(--color-gold);
+  border: 2px solid var(--color-gold);
+}
+
 /* UTILITY */
 .center {
   text-align: center;
@@ -289,17 +337,49 @@ body.modal-open {
   place-items: center;
   width: 100vw;
   min-height: 100vh;
-  padding: 2rem;
+  padding: clamp(1rem, 0.8rem + 2vw, 3rem);
   overflow: hidden;
 }
 
-.underline {
+.hr {
   width: 90%;
   margin: auto;
 }
 
 .p-relative {
   position: relative;
+}
+
+.outline-decor {
+  width: 100%;
+  min-height: 100%;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.underline {
+  position: relative;
+}
+
+.underline::after {
+  content: '';
+  position: absolute;
+  bottom: -0.2em;
+  left: 0;
+  right: 0;
+  width: 90%;
+  margin: auto;
+  border-bottom: 2px solid currentColor;
 }
 
 /* FLIPBOOK */
@@ -350,7 +430,9 @@ body.modal-open {
 }
 
 .flipbook-controls:hover,
-.flipbook-pdf:hover + .flipbook-controls {
+.flipbook-controls:focus-visible,
+.flipbook-pdf:hover + .flipbook-controls,
+.flipbook-pdf:focus-visible + .flipbook-controls {
   opacity: 1;
 }
 
@@ -363,8 +445,17 @@ body.modal-open {
 }
 
 @media (min-width: 40em) {
+  .header-2 {
+    margin-top: 3rem;
+  }
+
   .staff-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .outline-decor {
+    padding: 1rem;
+    border: 2px solid var(--color-on-primary);
   }
 }
 
