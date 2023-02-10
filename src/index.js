@@ -1,7 +1,5 @@
 import './style.css'
 import { init as flipbook } from 'flipbook-viewer'
-import Axios from 'axios'
-import fileDownload from 'js-file-download'
 import { init as initPdf } from './book-pdf'
 import test from './books/test.pdf'
 import scrapbook from './books/scrapbook.pdf'
@@ -51,21 +49,10 @@ const openBook = (bookName) => () => {
   })
 }
 
-const downloadBook = (bookName) => () =>
-  Axios.get(books[bookName], { responseType: 'blob' }).then((res) =>
-    fileDownload(res.data, `${bookName}.pdf`)
-  )
-
 document
   .querySelectorAll('[data-book]')
   .forEach((button) =>
     button.addEventListener('click', openBook(button.dataset.book))
-  )
-
-document
-  .querySelectorAll('[data-bookdl]')
-  .forEach((button) =>
-    button.addEventListener('click', downloadBook(button.dataset.bookdl))
   )
 
 flipbookNode.addEventListener('click', ({ target }) => {

@@ -18,7 +18,11 @@ module.exports = {
       },
       {
         test: /\.(pdf)$/,
-        use: ['file-loader'],
+        loader: 'file-loader',
+        options: {
+          name: (resourcePath) =>
+            resourcePath.match(/[\\\/]src[\\\/](?<file>.+)/iu).groups.file,
+        },
       },
     ],
   },
