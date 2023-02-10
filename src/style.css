@@ -282,6 +282,7 @@ hr {
   width: 100vw;
   min-height: 100vh;
   padding: 2rem;
+  overflow: hidden;
 }
 
 .underline {
@@ -292,12 +293,20 @@ hr {
 /* FLIPBOOK */
 .flipbook {
   display: grid;
-  align-items: center;
-  grid-template-columns: auto 1fr auto;
+  place-items: center;
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: var(--z-index-modal);
+}
+
+.flipbook[data-loading='true']::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('./images/spinner.svg');
+  background-position: center;
+  background-size: 5rem;
 }
 
 .flipbook-pdf {
@@ -308,7 +317,7 @@ hr {
 .flipbook-pdf canvas {
   max-width: 100%;
   max-height: 100vh;
-  width: auto !important;
+  width: 100% !important;
   height: auto !important;
   aspect-ratio: 800/600;
 }

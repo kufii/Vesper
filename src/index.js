@@ -11,32 +11,45 @@ const books = {
 
 const flipbookNode = document.querySelector('#flipbook')
 const pdfNode = document.querySelector('#flipbookPdf')
-const btnPrev = document.querySelector('#flipbookPrev')
-const btnNext = document.querySelector('#flipbookNext')
 
-flipbookNode.addEventListener('click', ({ target }) => {
-  if (target !== flipbookNode && target !== pdfNode) return
+const closeBook = () => {
   flipbookNode.hidden = true
   pdfNode.innerHTML = ''
-})
+}
 
-const openBook = (name) => () =>
-  initPdf(books[name], (err, book) => {
+const openBook = (bookName) => () => {
+  flipbookNode.dataset.loading = true
+  flipbookNode.hidden = false
+  initPdf(books[bookName], (err, book) => {
     if (err) {
       console.error(err)
       return
     }
-    flipbookNode.hidden = false
     const opts = {}
     flipbook(book, pdfNode, opts, (err, viewer) => {
-      if (err) return console.error(err)
-      btnNext.onclick = () => viewer.flip_forward()
-      btnPrev.onclick = () => viewer.flip_back()
+      if (err) {
+        console.error(err)
+        closeBook()
+        return
+      }
+      flipbookNode.dataset.loading = false
+      const canvas = pdfNode.querySelector('canvas')
+      canvas.onclick = (e) => {
+        if (e.clientX - canvas.offsetLeft >= canvas.offsetWidth / 2)
+          viewer.flip_forward()
+        else viewer.flip_back()
+      }
     })
   })
+}
 
 document
   .querySelectorAll('[data-book]')
   .forEach((button) =>
     button.addEventListener('click', openBook(button.dataset.book))
   )
+
+flipbookNode.addEventListener('click', ({ target }) => {
+  if (target !== flipbookNode && target !== pdfNode) return
+  closeBook()
+})
