@@ -55,8 +55,12 @@
               <div class="bookshelf-container">
                 <div class="books">
                   <div class="book-perspective">
-                    <button class="book" data-book="test">
-                      <img src="./images/cover.jpeg" alt="book" />
+                    <button
+                      class="book"
+                      data-book="scrapbook"
+                      aria-label="open scrapbook pdf"
+                    >
+                      <img src="./images/scrapbook-cover.png" alt="book" />
                     </button>
                   </div>
                   <div class="book-perspective">
@@ -65,7 +69,7 @@
                     </button>
                   </div>
                   <div class="book-perspective">
-                    <button class="book" data-book="magni">
+                    <button class="book" data-book="test">
                       <img src="./images/cover.jpeg" alt="book" />
                     </button>
                   </div>
@@ -73,28 +77,51 @@
                 <div class="bookshelf"></div>
                 <div class="books">
                   <div class="bookshelf-buttons">
-                    <button class="bookshelf-button bookshelf-button-primary">
-                      Borrow a Book (DL)
-                    </button>
-                    <button class="bookshelf-button bookshelf-button-secondary">
-                      Accessibility Ver (.docx)
-                    </button>
+                    <a
+                      href="./books/scrapbook.pdf"
+                      download
+                      class="bookshelf-button bookshelf-button-primary"
+                      aria-label="download adventure scrapbook"
+                    >
+                      Borrow (Download)
+                    </a>
+                    <a
+                      href="https://docs.google.com/document/d/1mgvX3ABN872nmAb5_IE6BUtNiZSgfNPzGxfDy14Gikc/edit?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="bookshelf-button bookshelf-button-secondary"
+                      aria-label="open accessible version of adventure scrapbook"
+                    >
+                      Accessibility Version (.docx)
+                    </a>
                   </div>
                   <div class="bookshelf-buttons">
-                    <button class="bookshelf-button bookshelf-button-primary">
-                      Borrow a Book (DL)
-                    </button>
-                    <button class="bookshelf-button bookshelf-button-secondary">
-                      Accessibility Ver (.docx)
-                    </button>
+                    <a
+                      href="#"
+                      class="bookshelf-button bookshelf-button-primary"
+                    >
+                      Borrow (Download)
+                    </a>
+                    <a
+                      href="#"
+                      class="bookshelf-button bookshelf-button-secondary"
+                    >
+                      Accessibility Version (.docx)
+                    </a>
                   </div>
                   <div class="bookshelf-buttons">
-                    <button class="bookshelf-button bookshelf-button-primary">
-                      Borrow a Book (DL)
-                    </button>
-                    <button class="bookshelf-button bookshelf-button-secondary">
-                      Accessibility Ver (.docx)
-                    </button>
+                    <a
+                      href="#"
+                      class="bookshelf-button bookshelf-button-primary"
+                    >
+                      Borrow (Download)
+                    </a>
+                    <a
+                      href="#"
+                      class="bookshelf-button bookshelf-button-secondary"
+                    >
+                      Accessibility Version (.docx)
+                    </a>
                   </div>
                 </div>
               </div>
@@ -106,14 +133,17 @@
         <div class="staff-grid">
           <div class="staff-card">
             <span class="staff-card-title">Archivists</span>
-            <div class="staff-card-content-left">
-              Lead Organizer: Pongo<br />Management: Skylimit & tako<br />Server
-              Moderator: Pongo<br />Social Media Manager: Pongo<br />PR Manager:
-              Arita
+            <div>
+              <span>Lead Organizer:</span>
+              <span>Pongo</span>
             </div>
             <div>
-              Website Design Team:<br />Ainslie Marie & yuzu san<br />Accessibility
-              Team:<br />mmmonstruo, DEADRKGK,<br />krisiviel
+              <span>Web Design Team:</span>
+              <span>Pongo</span>
+            </div>
+            <div>
+              <span>Management:</span>
+              <span>Pongo</span>
             </div>
           </div>
           <div class="staff-card">

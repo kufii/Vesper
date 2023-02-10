@@ -2,11 +2,11 @@ import './style.css'
 import { init as flipbook } from 'flipbook-viewer'
 import { init as initPdf } from './book-pdf'
 import test from './books/test.pdf'
-import magni from './books/magni.pdf'
+import scrapbook from './books/scrapbook.pdf'
 
 const books = {
   test,
-  magni,
+  scrapbook,
 }
 
 const flipbookNode = document.querySelector('#flipbook')
