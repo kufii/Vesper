@@ -15,6 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&family=Cormorant:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <!-- VENDOR -->
     <link href="https://cdn.skypack.dev/sanitize.css" rel="stylesheet" />
     <link
@@ -145,7 +149,18 @@
       </div>
     </div>
     <div class="flipbook" id="flipbook" hidden>
-      <div id="flipbookPdf" class="flipbook-pdf"></div>
+      <div class="p-relative">
+        <div id="flipbookPdf" class="flipbook-pdf"></div>
+        <div class="flipbook-controls">
+          <button
+            id="flipbookClose"
+            class="flipbook-control"
+            aria-label="close book"
+          >
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

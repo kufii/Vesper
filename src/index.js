@@ -11,13 +11,16 @@ const books = {
 
 const flipbookNode = document.querySelector('#flipbook')
 const pdfNode = document.querySelector('#flipbookPdf')
+const closeButton = document.querySelector('#flipbookClose')
 
 const closeBook = () => {
   flipbookNode.hidden = true
   pdfNode.innerHTML = ''
+  document.body.classList.remove('modal-open')
 }
 
 const openBook = (bookName) => () => {
+  document.body.classList.add('modal-open')
   flipbookNode.dataset.loading = true
   flipbookNode.hidden = false
   initPdf(books[bookName], (err, book) => {
@@ -25,7 +28,10 @@ const openBook = (bookName) => () => {
       console.error(err)
       return
     }
-    const opts = {}
+    const opts = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    }
     flipbook(book, pdfNode, opts, (err, viewer) => {
       if (err) {
         console.error(err)
@@ -53,3 +59,4 @@ flipbookNode.addEventListener('click', ({ target }) => {
   if (target !== flipbookNode && target !== pdfNode) return
   closeBook()
 })
+closeButton.addEventListener('click', closeBook)
