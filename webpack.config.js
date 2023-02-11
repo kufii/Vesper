@@ -13,16 +13,19 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(html)$/,
+        test: /\.(html)$/i,
         use: ['html-loader'],
       },
       {
-        test: /\.(pdf)$/,
-        loader: 'file-loader',
-        options: {
-          name: (resourcePath) =>
-            resourcePath.match(/[\\\/]src[\\\/](?<file>.+)/iu).groups.file,
-        },
+        test: /browserconfig\.xml$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'browserconfig.xml',
+            },
+          },
+        ],
       },
     ],
   },

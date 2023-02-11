@@ -321,8 +321,9 @@ body.modal-open {
   filter: drop-shadow(0px 4px 16px rgb(0 0 0 / 25%));
 }
 
-.bookshelf-media:hover {
-  transform: translateY(-2rem);
+.bookshelf-media:hover,
+.bookshelf-media:focus-visible {
+  transform: translateY(clamp(-2rem, -0.4rem - 2vw, -0.5rem));
 }
 
 /* UTILITY */
