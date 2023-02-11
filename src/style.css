@@ -67,7 +67,7 @@ body.modal-open {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-  gap: 4rem;
+  gap: clamp(1rem, 0.6rem + 4vw, 4rem);
   min-height: 100%;
 }
 
@@ -184,7 +184,7 @@ body.modal-open {
 .books {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
+  justify-content: stretch;
   align-items: flex-end;
   gap: clamp(1.4rem, 0.6rem + 4vw, 5rem);
   margin-inline: clamp(1rem, 0.6rem + 4vw, 5rem);
@@ -271,14 +271,18 @@ body.modal-open {
 }
 
 .bookshelf-buttons {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  align-self: stretch;
   gap: 1rem;
-  margin-top: 3rem;
+  margin-top: clamp(1rem, 0.8rem + 3vw, 3rem);
 }
 
 .bookshelf-button {
+  flex: 1;
+  display: grid;
+  place-items: center;
   background: none;
   outline: none;
   border: none;
