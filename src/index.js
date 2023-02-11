@@ -3,10 +3,18 @@ import { init as flipbook } from 'flipbook-viewer'
 import { init as initPdf } from './book-pdf'
 import test from './books/test.pdf'
 import scrapbook from './books/scrapbook.pdf'
+import tea from './books/tea-catalog.pdf'
+
+const inDev = window.location.hostname === '127.0.0.1'
 
 const books = {
   test,
-  scrapbook,
+  tea: inDev
+    ? tea
+    : 'https://vesperbirthday.azureedge.net/pdfcdn/tea-catalog.pdf',
+  scrapbook: inDev
+    ? scrapbook
+    : 'https://vesperbirthday.azureedge.net/pdfcdn/scrapbook.pdf',
 }
 
 const flipbookNode = document.querySelector('#flipbook')
@@ -26,6 +34,7 @@ const openBook = (bookName) => () => {
   initPdf(books[bookName], (err, book) => {
     if (err) {
       console.error(err)
+      closeBook()
       return
     }
     const opts = {
